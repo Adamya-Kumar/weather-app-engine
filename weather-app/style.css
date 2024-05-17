@@ -1,19 +1,64 @@
 body {
-    font-family: "Courier New", Courier, monospace;
-    font-weight: bolder;
-    background-color: #f2f2f2;
-  }
-  table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  th,
-  td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-  }
-  th {
-    background-color: #f2f2f2;
-  }
-  
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bolder;
+  background-color: #f2f2f2;
+  background-color: blu;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+#city-input {
+  height: 3em;
+  width: 30em;
+  text-align: center;
+  font-size: medium;
+  border-radius: 7px;
+  font-weight: bold;
+
+}
+
+#Search-btn {
+  height: 3em;
+  width: 10em;
+  font-size: medium;
+  border-radius: 7px;
+  transition: 2s green;
+}
+
+#Search-btn:hover {
+  background-color: rgb(4, 188, 4);
+  transition-delay: 10s;
+  color: white;
+}
+
+#navbar {
+  text-align: center;
+}
+
+header {
+  font-size: 3em;
+  background-image: url("./text_image.jpg");
+  background-repeat: repeat;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: lighter;
+  text-transform: uppercase;
+  font-family: 'Steelfish Rg', 'helvetica neue',
+    helvetica, arial, sans-serif;
+  font-weight: 800;
+  -webkit-font-smoothing: antialiased;
+}

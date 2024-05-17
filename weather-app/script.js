@@ -13,7 +13,7 @@ function genrateTemplate() {
     <table id="weatherTable">
       <thead>
         <tr>
-          <th colspan="2">Location</th>
+          <th colspan="2" class="title">Location</th>
         </tr>
       </thead>
       <tbody>
@@ -50,7 +50,7 @@ function genrateTemplate() {
     <table id="currentWeatherTable">
       <thead>
         <tr>
-          <th colspan="2">Current Weather</th>
+          <th colspan="2" class="title">Current Weather</th>
         </tr>
       </thead>
       <tbody>
@@ -107,7 +107,7 @@ function genrateTemplate() {
           <td id="Gust-Speed"></td>
         </tr>
         <tr>
-          <td>Air Quality</td>
+          <td class="title">Air Quality</td>
           <td id="Air-Quality">
         
           </td>
@@ -115,6 +115,31 @@ function genrateTemplate() {
       </tbody>
     </table>
   </div>`;
+}
+function changeBackground(condition) {
+  const el = document.getElementsByClassName("title");
+  console.log(el);
+  console.log(condition);
+  if ("Partly cloudy" === condition) {
+    el[0].style.backgroundColor = "blue";
+    el[1].style.backgroundColor = "blue";
+    el[2].style.backgroundColor = "blue";
+  }
+  if ("Overcast" === condition) {
+    el[0].style.backgroundColor = "grey";
+    el[1].style.backgroundColor = "grey";
+    el[2].style.backgroundColor = "grey";
+  }
+  if ("Sunny" === condition) {
+    el[0].style.backgroundColor = "yellow";
+    el[1].style.backgroundColor = "yellow";
+    el[2].style.backgroundColor = "yellow";
+  }
+  if ("Mist" === condition) {
+    el[0].style.backgroundColor = "orange";
+    el[1].style.backgroundColor = "orange";
+    el[2].style.backgroundColor = "orange";
+  }
 }
 
 searchbtn.addEventListener("click", async () => {
@@ -165,15 +190,16 @@ searchbtn.addEventListener("click", async () => {
   Visibility.innerText = `${result.current.vis_km} km (${result.current.vis_miles} miles)`;
   UVIndex.innerText = `${result.current.uv}`;
   GustSpeed.innerText = `${result.current.gust_kph} km/h (${result.current.gust_mph} mph)`;
-  AirQuality = `
-  CO: ${result.current.co}<br />
-              NO2: ${result.current.no2}<br />
-              O3: ${result.current.o3}<br />
-              SO2: ${result.current.so2}<br />
-              PM2.5: ${result.current.pm2_5}<br />
-              PM10: ${result.current.pm10}<br />
-              US EPA Index: ${result.current.us - epa - index}<br />
-              GB DEFRA Index: ${result.current.gb - defra - index}
+  AirQuality.innerHTML = `
+  CO: ${result.current.air_quality.co}<br>
+              NO2: ${result.current.air_quality.no2}<br>
+              O3: ${result.current.air_quality.o3}<br>
+              SO2: ${result.current.air_quality.so2}<br>
+              PM2.5: ${result.current.pm2_5}<br>
+              PM10: ${result.current.air_quality.pm10}<br>
+              US EPA Index: ${result.current.air_quality["us-epa-index"]}<br>
+              GB DEFRA Index: ${result.current.air_quality["gb-defra-index"]}
   `;
-  city = "";
+
+  changeBackground(`${result.current.condition.text}`);
 });
